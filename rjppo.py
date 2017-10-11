@@ -5,18 +5,18 @@ from visual import *
 window = display(title = "Ruch jednostajnie przyspieszony po okregu",
                width = 720, height = 700, background = color.black)
 dt = 0.001
-rad_scale_factor = 4
+rad_scale_factor = 7
 
 
 r_val = 25 # circle radius
 v_val = 10
 a_val = v_val**2 / r_val
-# omega_val = v_val/r_val
+omega_val = v_val/r_val
 
 r_vect = vector(r_val, 0, 0)
 v_vect = vector(0, v_val, 0)
 a_vect = vector(-a_val, 0 ,0) #uwzgledniam zwrot przeciwny do r
-# omega_vect = vector(0,0,omega_val)
+omega_vect = vector(0,0,omega_val)
 
 body = sphere(pos = (r_val,0,0), radius = 0.2, color = color.yellow,
 	make_trail = True, interval = 10)
@@ -26,8 +26,8 @@ a_vect_arrow = arrow(pos = body.pos, axis = -body.pos, length = mag(a_vect),
  	shaftwidth = 0.25, color = color.red)
 v_vect_arrow = arrow(pos = body.pos, axis = (0,1,0), length = v_val,
  	shaftwidth = 0.25, color = color.blue)
-# omega_vect_arrow = arrow(pos = (0,0,0), axis = (0,0,1), 
-# 	lenght = omega_val*rad_scale_factor, color = color.blue)
+omega_vect_arrow = arrow(pos = (0,0,0), axis = (0,0,1), 
+ 	lenght = omega_val*rad_scale_factor, color = color.blue)
 while True:
 	rate(2500)
 	body.pos = body.pos + v_vect*dt #przesuwam
